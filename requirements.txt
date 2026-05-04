@@ -1,0 +1,34 @@
+# JTK Project Requirements
+# Node.js version: 16.x or higher
+# npm version: 8.x or higher
+
+# Root Dependencies
+@21st-sdk/agent@^0.0.16
+zod@^4.3.6
+
+# Backend Dependencies
+express@^4.18.0
+cors@^2.8.5
+dotenv@^16.0.0
+axios@^1.3.0
+
+# Backend Dev Dependencies
+nodemon@^2.0.0
+jest@^29.0.0
+
+# Frontend Dependencies
+react@^18.0.0
+react-dom@^18.0.0
+react-router-dom@^6.0.0
+
+# Frontend Dev Dependencies
+react-scripts@5.0.0
+vite@^4.0.0
+
+# Installation Instructions:
+# 1. Install root dependencies: npm install
+# 2. Install backend dependencies: npm install --prefix backend
+# 3. Install frontend dependencies: npm install --prefix frontend
+#
+# Or install all at once:
+# npm install && npm install --prefix backend && npm install --prefix frontend

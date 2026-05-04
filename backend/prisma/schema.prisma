@@ -1,0 +1,186 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  role      Role     @default(CUSTOMER)
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  quotes Quote[]
+}
+
+enum Role {
+  ADMIN
+  CUSTOMER
+  GUEST
+}
+
+model Quote {
+  id                     String        @id @default(uuid())
+  customerName           String
+  email                  String
+  phone                  String
+  company                String?
+  industryType           IndustryType
+  machineryType          String
+  problemDescription     String        @db.Text
+  urgency                Urgency
+  preferredContactMethod ContactMethod
+  status                 QuoteStatus   @default(NEW)
+  quotedAmount           Decimal?      @db.Decimal(10, 2)
+  quotedAt               DateTime?
+  createdAt              DateTime      @default(now())
+  updatedAt              DateTime      @updatedAt
+
+  attachments Attachment[]
+  userId      String?
+  user        User?        @relation(fields: [userId], references: [id])
+}
+
+enum IndustryType {
+  MINING
+  MANUFACTURING
+  CONSTRUCTION
+  AGRICULTURE
+  MARINE
+  LOGISTICS
+  OTHER
+}
+
+enum Urgency {
+  EMERGENCY
+  HIGH
+  NORMAL
+  LOW
+}
+
+enum ContactMethod {
+  EMAIL
+  PHONE
+  WHATSAPP
+}
+
+enum QuoteStatus {
+  NEW
+  REVIEWED
+  QUOTED
+  ACCEPTED
+  REJECTED
+  EXPIRED
+}
+
+model Part {
+  id                  String       @id @default(uuid())
+  sku                 String       @unique
+  name                String
+  description         String       @db.Text
+  category            PartCategory
+  manufacturer        String
+  model               String
+  compatibleMachinery String[]
+  priceRange          String?
+  inStock             Boolean      @default(false)
+  leadTime            String
+  certifications      String[]
+  images              String[]
+  datasheet           String?
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+}
+
+enum PartCategory {
+  HYDRAULIC
+  ELECTRICAL
+  MECHANICAL
+  PNEUMATIC
+  STRUCTURAL
+  BEARINGS
+  SEALS
+  FILTERS
+  OTHER
+}
+
+model Inquiry {
+  id        String        @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String        @db.Text
+  type      InquiryType
+  status    InquiryStatus @default(NEW)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+enum InquiryType {
+  GENERAL
+  TECHNICAL
+  BILLING
+  SUPPORT
+  OTHER
+}
+
+enum InquiryStatus {
+  NEW
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+model DiagnosisRequest {
+  id                String          @id @default(uuid())
+  customerName      String
+  email             String
+  phone             String
+  company           String?
+  location          String
+  machineryType     String
+  symptoms          String          @db.Text
+  machineryAge      String?
+  lastServiceDate   DateTime?
+  urgency           Urgency
+  preferredSchedule String
+  status            DiagnosisStatus @default(REQUESTED)
+  diagnosisReport   String?         @db.Text
+  technicianNotes   String?         @db.Text
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  scheduledAt       DateTime?
+
+  attachments Attachment[]
+}
+
+enum DiagnosisStatus {
+  REQUESTED
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+model Attachment {
+  id           String   @id @default(uuid())
+  filename     String
+  originalName String
+  mimetype     String
+  size         Int
+  url          String
+  createdAt    DateTime @default(now())
+
+  quoteId String?
+  quote   Quote?  @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  diagnosisId String?
+  diagnosis   DiagnosisRequest? @relation(fields: [diagnosisId], references: [id], onDelete: Cascade)
+}
