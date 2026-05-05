@@ -60,5 +60,42 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Enable smooth scrolling for anchor navigation */
+    scroll-behavior: smooth;
+  }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Global focus ring — visible on keyboard, hidden on mouse */
+  :focus-visible {
+    outline: 2px solid var(--jtk-orange);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Skip-to-main link (a11y) */
+  .skip-link {
+    position: absolute;
+    top: -999px;
+    left: 0;
+    z-index: 9999;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: var(--jtk-orange);
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+  }
+  .skip-link:focus {
+    top: 0;
   }
 }
