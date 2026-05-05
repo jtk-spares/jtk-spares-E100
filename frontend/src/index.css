@@ -1,10 +1,15 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
   :root {
+    /* JTK Brand Tokens */
+    --jtk-navy: #040d1b;
+    --jtk-orange: #ea5c27;
+    --jtk-surface: #f5f4f0;
+    --jtk-text: #1a2540;
+    --jtk-muted: #6b7280;
+
+    /* shadcn/ui compatibility */
     --background: 0 0% 100%;
     --foreground: 0 0% 3.6%;
     --card: 0 0% 100%;
