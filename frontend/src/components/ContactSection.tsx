@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Phone, Mail } from 'lucide-react'
+import { useState, useRef, useCallback } from 'react'
+import { Phone, Mail, Loader2 } from 'lucide-react'
 
 interface FormState {
   name: string
@@ -18,36 +18,76 @@ interface FormErrors {
 
 const INITIAL: FormState = { name: '', email: '', phone: '', company: '', message: '', _trap: '' }
 
-function validate(data: FormState): FormErrors {
+function validateField(name: keyof FormErrors, value: string): string | undefined {
+  if (name === 'name') {
+    if (!value.trim()) return 'Name is required. Please enter your full name.'
+  }
+  if (name === 'email') {
+    if (!value.trim()) return 'Email is required. Please enter your email address.'
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Email looks incorrect. Check for a missing @ or domain.'
+  }
+  if (name === 'message') {
+    if (!value.trim()) return 'Message is required. Tell us what you need.'
+  }
+  return undefined
+}
+
+function validateAll(data: FormState): FormErrors {
   const errors: FormErrors = {}
-  if (!data.name.trim()) errors.name = 'Name is required'
-  if (!data.email.trim()) errors.email = 'Email is required'
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errors.email = 'Invalid email address'
-  if (!data.message.trim()) errors.message = 'Message is required'
+  const fields = ['name', 'email', 'message'] as const
+  for (const f of fields) {
+    const err = validateField(f, data[f])
+    if (err) errors[f] = err
+  }
   return errors
 }
 
 export default function ContactSection() {
   const [form, setForm] = useState<FormState>(INITIAL)
   const [errors, setErrors] = useState<FormErrors>({})
+  const [touched, setTouched] = useState<Partial<Record<keyof FormErrors, boolean>>>({})
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  // Refs for auto-focus on submit with errors
+  const nameRef = useRef<HTMLInputElement>(null)
+  const emailRef = useRef<HTMLInputElement>(null)
+  const messageRef = useRef<HTMLTextAreaElement>(null)
+  const fieldRefs = { name: nameRef, email: emailRef, message: messageRef }
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
-    if (errors[name as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }))
+    // Re-validate if already touched
+    if (touched[name as keyof FormErrors]) {
+      const err = validateField(name as keyof FormErrors, value)
+      setErrors((prev) => ({ ...prev, [name]: err }))
     }
-  }
+  }, [touched])
+
+  const handleBlur = useCallback((e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    const fieldName = name as keyof FormErrors
+    if (!['name', 'email', 'message'].includes(fieldName)) return
+    setTouched((prev) => ({ ...prev, [fieldName]: true }))
+    const err = validateField(fieldName, value)
+    setErrors((prev) => ({ ...prev, [fieldName]: err }))
+  }, [])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    const errs = validate(form)
+    const errs = validateAll(form)
+    setTouched({ name: true, email: true, message: true })
     if (Object.keys(errs).length > 0) {
       setErrors(errs)
+      // Auto-focus first invalid field
+      for (const f of ['name', 'email', 'message'] as const) {
+        if (errs[f]) {
+          fieldRefs[f].current?.focus()
+          break
+        }
+      }
       return
     }
-    // Honeypot check (bot-filled field)
     if (form._trap) return
 
     setStatus('sending')
@@ -78,19 +118,19 @@ export default function ContactSection() {
           {/* Left: info */}
           <div>
             <p
-              className="text-xs font-semibold uppercase tracking-widest mb-4"
-              style={{ color: 'var(--jtk-orange)' }}
+              className="text-xs font-medium uppercase tracking-widest mb-3"
+              style={{ color: 'var(--color-brand)' }}
             >
               Get in touch
             </p>
             <h2
               id="contact-heading"
               className="text-4xl sm:text-5xl font-extrabold uppercase leading-tight mb-6"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif", color: 'var(--jtk-navy)' }}
+              style={{ fontFamily: "'Barlow Condensed', sans-serif", color: 'var(--color-surface-dark)' }}
             >
               Contact us
             </h2>
-            <p className="text-gray-600 leading-relaxed mb-10">
+            <p className="leading-relaxed mb-10" style={{ color: 'var(--color-text-secondary)' }}>
               Tell us what you need. We'll respond within one business day with availability
               and pricing.
             </p>
@@ -99,12 +139,12 @@ export default function ContactSection() {
               <li>
                 <a
                   href="tel:+27683927937"
-                  className="inline-flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
-                  style={{ minHeight: '44px' }}
+                  className="inline-flex items-center gap-3 text-sm font-medium transition-colors"
+                  style={{ minHeight: '44px', color: 'var(--color-text-secondary)' }}
                 >
                   <Phone
                     size={18}
-                    style={{ color: 'var(--jtk-orange)' }}
+                    style={{ color: 'var(--color-brand)' }}
                     aria-hidden="true"
                   />
                   +27(0)68 392 7937
@@ -113,12 +153,12 @@ export default function ContactSection() {
               <li>
                 <a
                   href="mailto:jason@jtkspares.co.za"
-                  className="inline-flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
-                  style={{ minHeight: '44px' }}
+                  className="inline-flex items-center gap-3 text-sm font-medium transition-colors"
+                  style={{ minHeight: '44px', color: 'var(--color-text-secondary)' }}
                 >
                   <Mail
                     size={18}
-                    style={{ color: 'var(--jtk-orange)' }}
+                    style={{ color: 'var(--color-brand)' }}
                     aria-hidden="true"
                   />
                   jason@jtkspares.co.za
@@ -128,20 +168,22 @@ export default function ContactSection() {
           </div>
 
           {/* Right: form */}
-          <div>
+          <div aria-live="polite">
             {status === 'sent' ? (
               <div
                 className="p-8 border text-center"
-                style={{ borderColor: 'var(--jtk-orange)' }}
+                style={{ borderColor: 'var(--color-brand)' }}
                 role="alert"
               >
                 <p
                   className="text-2xl font-bold uppercase mb-2"
-                  style={{ fontFamily: "'Barlow Condensed', sans-serif", color: 'var(--jtk-navy)' }}
+                  style={{ fontFamily: "'Barlow Condensed', sans-serif", color: 'var(--color-surface-dark)' }}
                 >
                   Thank you!
                 </p>
-                <p className="text-gray-600">Your message has been received. We'll be in touch shortly.</p>
+                <p style={{ color: 'var(--color-text-secondary)' }}>
+                  Your message has been received. We'll be in touch shortly.
+                </p>
               </div>
             ) : (
               <form noValidate onSubmit={handleSubmit} className="space-y-6">
@@ -161,17 +203,20 @@ export default function ContactSection() {
 
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium mb-1" style={{ color: 'var(--color-text-primary)' }}>
                     Name <span aria-hidden="true">*</span>
                   </label>
                   <input
+                    ref={nameRef}
                     id="name"
                     name="name"
                     type="text"
                     value={form.name}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     autoComplete="name"
                     aria-required="true"
+                    aria-invalid={!!errors.name}
                     aria-describedby={errors.name ? 'name-error' : undefined}
                     className="block w-full px-3 py-2 border text-sm focus:outline-none focus:ring-2"
                     style={{
@@ -188,17 +233,20 @@ export default function ContactSection() {
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium mb-1" style={{ color: 'var(--color-text-primary)' }}>
                     Email <span aria-hidden="true">*</span>
                   </label>
                   <input
+                    ref={emailRef}
                     id="email"
                     name="email"
                     type="email"
                     value={form.email}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     autoComplete="email"
                     aria-required="true"
+                    aria-invalid={!!errors.email}
                     aria-describedby={errors.email ? 'email-error' : undefined}
                     className="block w-full px-3 py-2 border text-sm focus:outline-none focus:ring-2"
                     style={{
@@ -215,7 +263,7 @@ export default function ContactSection() {
 
                 {/* Phone (optional) */}
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="phone" className="block text-sm font-medium mb-1" style={{ color: 'var(--color-text-primary)' }}>
                     Phone
                   </label>
                   <input
@@ -232,7 +280,7 @@ export default function ContactSection() {
 
                 {/* Company (optional) */}
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="company" className="block text-sm font-medium mb-1" style={{ color: 'var(--color-text-primary)' }}>
                     Company
                   </label>
                   <input
@@ -249,16 +297,19 @@ export default function ContactSection() {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium mb-1" style={{ color: 'var(--color-text-primary)' }}>
                     Message <span aria-hidden="true">*</span>
                   </label>
                   <textarea
+                    ref={messageRef}
                     id="message"
                     name="message"
                     rows={5}
                     value={form.message}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     aria-required="true"
+                    aria-invalid={!!errors.message}
                     aria-describedby={errors.message ? 'message-error' : undefined}
                     className="block w-full px-3 py-2 border text-sm focus:outline-none focus:ring-2 resize-none"
                     style={{ borderColor: errors.message ? '#dc2626' : '#d1d5db' }}
@@ -272,17 +323,24 @@ export default function ContactSection() {
 
                 {status === 'error' && (
                   <p role="alert" className="text-sm text-red-600">
-                    Something went wrong. Please try again or email us directly.
+                    Something went wrong. Please try again or email us directly at jason@jtkspares.co.za.
                   </p>
                 )}
 
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="w-full py-3 text-sm font-semibold text-white uppercase tracking-wide transition-opacity disabled:opacity-60"
-                  style={{ backgroundColor: 'var(--jtk-orange)', minHeight: '44px' }}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white uppercase tracking-wide transition-opacity disabled:opacity-60"
+                  style={{ backgroundColor: 'var(--color-brand)', minHeight: '44px' }}
                 >
-                  {status === 'sending' ? 'Sending…' : 'Send Message'}
+                  {status === 'sending' ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" aria-hidden="true" />
+                      Sending
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </button>
               </form>
             )}

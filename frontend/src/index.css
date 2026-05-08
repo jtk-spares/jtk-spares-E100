@@ -2,12 +2,36 @@
 
 @layer base {
   :root {
-    /* JTK Brand Tokens */
+    /* ─── Primitive tokens ─────────────────────────────────── */
     --jtk-navy: #040d1b;
     --jtk-orange: #ea5c27;
     --jtk-surface: #f5f4f0;
     --jtk-text: #1a2540;
     --jtk-muted: #6b7280;
+
+    /* ─── Semantic tokens ──────────────────────────────────── */
+    --color-brand: var(--jtk-orange);
+    --color-surface-dark: var(--jtk-navy);
+    --color-surface-light: var(--jtk-surface);
+    --color-text-primary: var(--jtk-text);
+    --color-text-secondary: #374151;
+    --color-text-muted: #6b7280;
+
+    /* ─── Component tokens ─────────────────────────────────── */
+    --btn-primary-bg: var(--color-brand);
+    --btn-primary-text: #ffffff;
+    --card-bg: #ffffff;
+    --card-border: #e5e7eb;
+    --card-shadow-rest: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --card-shadow-hover: 0 6px 16px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
+    --nav-bg: var(--color-surface-dark);
+    --section-alt-bg: var(--color-surface-light);
+    --focus-ring: var(--color-brand);
+
+    /* ─── Motion tokens ────────────────────────────────────── */
+    --motion-fast: 150ms ease-out;
+    --motion-base: 220ms ease-out;
+    --motion-entrance: 320ms ease-out;
 
     /* shadcn/ui compatibility */
     --background: 0 0% 100%;
@@ -98,5 +122,58 @@
   }
   .skip-link:focus {
     top: 0;
+  }
+
+  /* Card hover lift */
+  .card-hover {
+    box-shadow: var(--card-shadow-rest);
+    transition: box-shadow var(--motion-fast), transform var(--motion-fast);
+  }
+  .card-hover:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-3px);
+  }
+
+  /* Marquee animation */
+  @keyframes marquee-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 30s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  /* Marquee items render text via CSS to avoid duplicate DOM text nodes */
+  .marquee-item::before {
+    content: attr(data-label);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: inherit;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+
+  /* Section entrance fade-up */
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    animation: fade-up var(--motion-entrance) ease-out both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up {
+      animation: none;
+    }
   }
 }
