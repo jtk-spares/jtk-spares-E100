@@ -3,8 +3,10 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JTK Spares | Industrial Machinery Repairs &amp; Parts</title>
+<meta content="JTK Spares supplies industrial machinery parts and precision maintenance services across the Western Cape." name="description"/>
+<link href="./tailwind.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
 .material-symbols-outlined {
@@ -20,99 +22,40 @@
     background: rgba(228, 226, 227, 0.8);
 }
 </style>
-
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "tertiary-fixed-dim": "#ffb59d",
-                    "secondary-container": "#dddfe8",
-                    "inverse-surface": "#303031",
-                    "on-tertiary-fixed": "#390c00",
-                    "tertiary-fixed": "#ffdbd0",
-                    "inverse-primary": "#bec7db",
-                    "on-primary-fixed": "#131c2a",
-                    "secondary-fixed-dim": "#c4c6cf",
-                    "on-tertiary-fixed-variant": "#832600",
-                    "on-surface": "#1b1b1d",
-                    "on-secondary": "#ffffff",
-                    "surface-dim": "#dcd9db",
-                    "surface-container-low": "#f6f3f4",
-                    "outline": "#75777d",
-                    "primary": "#040d1b",
-                    "surface-bright": "#fcf8fa",
-                    "surface-container-lowest": "#ffffff",
-                    "error-container": "#ffdad6",
-                    "on-surface-variant": "#45474c",
-                    "surface-container-high": "#eae7e9",
-                    "outline-variant": "#c5c6cc",
-                    "on-secondary-fixed": "#181c22",
-                    "primary-fixed-dim": "#bec7db",
-                    "primary-container": "#1a2332",
-                    "error": "#ba1a1a",
-                    "background": "#fcf8fa",
-                    "on-tertiary": "#ffffff",
-                    "primary-fixed": "#dae3f7",
-                    "secondary-fixed": "#e0e2eb",
-                    "on-background": "#1b1b1d",
-                    "surface": "#fcf8fa",
-                    "on-secondary-fixed-variant": "#44474e",
-                    "on-primary": "#ffffff",
-                    "surface-container-highest": "#e4e2e3",
-                    "on-tertiary-container": "#ea5c27",
-                    "on-error": "#ffffff",
-                    "inverse-on-surface": "#f3f0f1",
-                    "on-secondary-container": "#60626a",
-                    "secondary": "#5b5e66",
-                    "tertiary": "#1f0400",
-                    "tertiary-container": "#451000",
-                    "on-primary-fixed-variant": "#3e4758",
-                    "on-error-container": "#93000a",
-                    "surface-tint": "#565f70",
-                    "surface-variant": "#e4e2e3",
-                    "on-primary-container": "#818a9d",
-                    "surface-container": "#f0edee"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "fontFamily": {
-                    "headline": ["Inter"],
-                    "body": ["Inter"],
-                    "label": ["Inter"]
-            }
-          },
-        },
-      }
-    </script>
 </head>
 
 <body class="bg-background text-on-surface font-body selection:bg-on-tertiary-container selection:text-white">
+<a class="absolute left-4 top-4 -translate-y-16 focus:translate-y-0 bg-[#ea5c27] text-white px-4 py-2 rounded-sm z-[60] transition-transform" href="#main-content">Skip to main content</a>
 <!-- TopNavBar -->
-<nav class="sticky top-0 w-full z-50 bg-[#040d1b] dark:bg-[#040d1b] flex justify-between items-center px-8 py-5 max-w-full">
+<nav aria-label="Primary navigation" class="sticky top-0 w-full z-50 bg-[#040d1b] dark:bg-[#040d1b] flex justify-between items-center px-4 md:px-8 py-5 max-w-full gap-4">
 <div class="text-2xl font-black tracking-tighter text-white dark:text-white uppercase font-headline">JTK SPARES</div>
 <div class="hidden md:flex gap-8 items-center">
-<a class="text-[#ea5c27] border-b-2 border-[#ea5c27] pb-1 font-inter tracking-tight font-bold uppercase text-sm" href="#">Inventory</a>
-<a class="text-slate-300 font-medium hover:text-[#ea5c27] transition-colors duration-200 font-inter tracking-tight uppercase text-sm" href="#">Industries</a>
-<a class="text-slate-300 font-medium hover:text-[#ea5c27] transition-colors duration-200 font-inter tracking-tight uppercase text-sm" href="#">Certifications</a>
-<a class="text-slate-300 font-medium hover:text-[#ea5c27] transition-colors duration-200 font-inter tracking-tight uppercase text-sm" href="#">Contact</a>
+<a class="text-[#ea5c27] border-b-2 border-[#ea5c27] pb-1 font-inter tracking-tight font-bold uppercase text-sm" href="#services">Inventory</a>
+<a class="text-slate-300 font-medium hover:text-[#ea5c27] transition-colors duration-200 font-inter tracking-tight uppercase text-sm" href="#coverage">Industries</a>
+<a class="text-slate-300 font-medium hover:text-[#ea5c27] transition-colors duration-200 font-inter tracking-tight uppercase text-sm" href="#testimonials">Certifications</a>
+<a class="text-slate-300 font-medium hover:text-[#ea5c27] transition-colors duration-200 font-inter tracking-tight uppercase text-sm" href="#contact">Contact</a>
 </div>
-<button class="bg-[#ea5c27] text-white px-6 py-3 rounded-lg font-headline font-bold uppercase text-xs tracking-widest hover:opacity-90 active:scale-[0.99] transition-all">
+<details class="md:hidden relative">
+<summary aria-label="Open navigation menu" class="list-none text-white cursor-pointer">
+<span class="material-symbols-outlined align-middle">menu</span>
+</summary>
+<div class="absolute right-0 mt-3 min-w-44 bg-[#1a2332] border border-white/10 rounded-lg p-3 grid gap-2">
+<a class="text-slate-300 text-xs uppercase tracking-widest hover:text-[#ea5c27]" href="#services">Inventory</a>
+<a class="text-slate-300 text-xs uppercase tracking-widest hover:text-[#ea5c27]" href="#coverage">Industries</a>
+<a class="text-slate-300 text-xs uppercase tracking-widest hover:text-[#ea5c27]" href="#testimonials">Certifications</a>
+<a class="text-slate-300 text-xs uppercase tracking-widest hover:text-[#ea5c27]" href="#contact">Contact</a>
+</div>
+</details>
+<button aria-label="Request a quote" class="bg-[#ea5c27] text-white px-4 md:px-6 py-3 rounded-lg font-headline font-bold uppercase text-xs tracking-widest hover:opacity-90 active:scale-[0.99] transition-all" type="button">
             Request Quote
         </button>
 </nav>
 
+<main id="main-content">
 <!-- Hero Section -->
-<header class="relative min-h-[870px] flex items-center overflow-hidden machined-gradient">
+<header class="relative min-h-[870px] flex items-center overflow-hidden machined-gradient" id="home">
 <div class="absolute inset-0 opacity-40 mix-blend-overlay">
-<img alt="Industrial machinery" class="w-full h-full object-cover" data-alt="Close-up of high-precision heavy industrial machinery with polished steel parts and dramatic blue and orange lighting in a workshop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFp745lmXYh7gqhXL1at-qv0RU1RuOGxBpyk7p1Zq-29yqH3dvFo2ReO8yS0qklzcgYsEsoXnM_rmEACv1nNrFSHOc-TFQ1aRxXcEW15QPpvi2K_Kqj24BgLx72EAm9Uz386-_i_8mCKPB1o3k-X2-Nnk1thd1Hwf89WRwilAgM7fqPvPMiHmjnVFDzkjH2ad-mF8DpH4q8I0ndMxExB9UmlmM_ffojYDbEDYhGTDbKNakI8wv9uC-KOMLZdV2t9ewTVVH_byVPQ4"/>
+<img alt="Industrial machinery" class="w-full h-full object-cover" data-alt="Close-up of high-precision heavy industrial machinery with polished steel parts and dramatic blue and orange lighting in a workshop" fetchpriority="high" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFp745lmXYh7gqhXL1at-qv0RU1RuOGxBpyk7p1Zq-29yqH3dvFo2ReO8yS0qklzcgYsEsoXnM_rmEACv1nNrFSHOc-TFQ1aRxXcEW15QPpvi2K_Kqj24BgLx72EAm9Uz386-_i_8mCKPB1o3k-X2-Nnk1thd1Hwf89WRwilAgM7fqPvPMiHmjnVFDzkjH2ad-mF8DpH4q8I0ndMxExB9UmlmM_ffojYDbEDYhGTDbKNakI8wv9uC-KOMLZdV2t9ewTVVH_byVPQ4"/>
 </div>
 <div class="relative z-10 max-w-7xl mx-auto px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12">
 <div class="lg:col-span-8">
@@ -171,7 +114,7 @@
 </div>
 </section>
 <!-- Service Overview (Bento Grid) -->
-<section class="py-24 px-8 max-w-7xl mx-auto">
+<section class="py-24 px-8 max-w-7xl mx-auto" id="services">
 <div class="mb-16">
 <h2 class="text-5xl font-black font-headline tracking-tighter uppercase mb-4 text-primary">Specialised Solutions</h2>
 <div class="w-24 h-2 bg-on-tertiary-container"></div>
@@ -179,7 +122,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
 <!-- Large Focus Card -->
 <div class="md:col-span-8 md:row-span-2 relative group overflow-hidden bg-primary rounded-lg">
-<img alt="Crane repair" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" data-alt="A heavy industrial crane being serviced by a technician in a high-contrast harbor setting with orange accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP_wtRCk7yzRk8JFWZTOslyB-8PNt5qZdt8Hxb0reWCbVeGpQ12S6yn66J7QB3qzTGyCZgjvV-eK_MTTgPS5YBx38SFygHthMns8ZnrKthXybaVeavGBVTFNIk6jAiYsMtZSw6mUN1xQ469GsTzjrSaZFpn1U3dntcPP8lXmMy-xkirRCKNCLbUxZT5Ui17trD4w5-8OMqCjkVeWc79Y-MyQtxL8uLfFaWBa7JHW7aumthPx6Pnsrvirns0D57VNi0HcFIB86rWhw"/>
+<img alt="Crane repair" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" data-alt="A heavy industrial crane being serviced by a technician in a high-contrast harbor setting with orange accents" decoding="async" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP_wtRCk7yzRk8JFWZTOslyB-8PNt5qZdt8Hxb0reWCbVeGpQ12S6yn66J7QB3qzTGyCZgjvV-eK_MTTgPS5YBx38SFygHthMns8ZnrKthXybaVeavGBVTFNIk6jAiYsMtZSw6mUN1xQ469GsTzjrSaZFpn1U3dntcPP8lXmMy-xkirRCKNCLbUxZT5Ui17trD4w5-8OMqCjkVeWc79Y-MyQtxL8uLfFaWBa7JHW7aumthPx6Pnsrvirns0D57VNi0HcFIB86rWhw"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
 <div class="absolute bottom-0 p-10">
 <h3 class="text-4xl font-black text-white uppercase tracking-tighter mb-4">Crane Repair &amp; Structural Integrity</h3>
@@ -191,7 +134,7 @@
 </div>
 <!-- Side Card 1 -->
 <div class="md:col-span-4 relative group overflow-hidden bg-surface-container-high rounded-lg">
-<img alt="Forklift maintenance" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Modern yellow forklift in a clean warehouse environment, soft focused industrial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZNAeidFNrH86BN4XwtLYg_uY5t3AbhAI4vINt5OHIXQopLLN8CWfZIIMDdjYD38b6xFq_cQ2dXOtcS1B8-Wx3a2AvM4XkNF4dQlmHQqOt_3SUedrXLaB2TopbemUocSaGgSvclH33x1p5NOTicexCpzC032OBGzZ48cA7RP03t88ffxXqAyx1VFjLIbxNtgfc8UuEd_H972nDLy0ONVUMfiFXQt_o0QwtNEcgYH3oZkiSAk4zj3ajwLPvChSuw4yhcv7Mtcvk_bM"/>
+<img alt="Forklift maintenance" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Modern yellow forklift in a clean warehouse environment, soft focused industrial lighting" decoding="async" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZNAeidFNrH86BN4XwtLYg_uY5t3AbhAI4vINt5OHIXQopLLN8CWfZIIMDdjYD38b6xFq_cQ2dXOtcS1B8-Wx3a2AvM4XkNF4dQlmHQqOt_3SUedrXLaB2TopbemUocSaGgSvclH33x1p5NOTicexCpzC032OBGzZ48cA7RP03t88ffxXqAyx1VFjLIbxNtgfc8UuEd_H972nDLy0ONVUMfiFXQt_o0QwtNEcgYH3oZkiSAk4zj3ajwLPvChSuw4yhcv7Mtcvk_bM"/>
 <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
 <div class="absolute inset-0 p-8 flex flex-col justify-end">
 <h3 class="text-2xl font-black text-white uppercase tracking-tight">Forklift Maintenance</h3>
@@ -243,14 +186,14 @@
 </div>
 <div class="relative">
 <div class="aspect-[4/5] rounded-lg overflow-hidden border border-white/10">
-<img alt="Technician at work" class="w-full h-full object-cover" data-alt="An industrial technician in a safety vest working on a complex electrical control panel with precise tools" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn2E5UgMQlUw4ZWvbRK8eqnYi6rrfQHsIPNGgF12rvsrpwhMB0nDQjbOrgpCE0qSeIS8-cVS5X36oYZpED_itGOW4VSdyMxn7eNyZqMOEompUcVXUoImLdrVaeaNO2W2ZnpuVwKe4lpJzlQlagDENaKH8doHHnMob-tInt-q4IRRlP-u6RmaLM1e__FS5alJwuSDoBLvcZgoZQM0KnU6Ss47MnV4WSfvAp_FnPSfkkoHigXGafPzasRNJ0ySoRj2zkLEkffb4Zvac"/>
+<img alt="Technician at work" class="w-full h-full object-cover" data-alt="An industrial technician in a safety vest working on a complex electrical control panel with precise tools" decoding="async" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn2E5UgMQlUw4ZWvbRK8eqnYi6rrfQHsIPNGgF12rvsrpwhMB0nDQjbOrgpCE0qSeIS8-cVS5X36oYZpED_itGOW4VSdyMxn7eNyZqMOEompUcVXUoImLdrVaeaNO2W2ZnpuVwKe4lpJzlQlagDENaKH8doHHnMob-tInt-q4IRRlP-u6RmaLM1e__FS5alJwuSDoBLvcZgoZQM0KnU6Ss47MnV4WSfvAp_FnPSfkkoHigXGafPzasRNJ0ySoRj2zkLEkffb4Zvac"/>
 </div>
 
 </div>
 </div>
 </section>
 <!-- Map Section -->
-<section class="py-24">
+<section class="py-24" id="coverage">
 <div class="max-w-7xl mx-auto px-8">
 <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
 <div>
@@ -270,7 +213,7 @@
 </div>
 </div>
 <div class="h-[500px] bg-surface-container-low rounded-lg overflow-hidden relative border border-outline-variant/10">
-<img alt="Map of Western Cape" class="w-full h-full object-cover grayscale opacity-50" data-alt="Stylized topological map of the Western Cape region with industrial markers and logistics routes highlighted" data-location="Western Cape" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK3N3_7zeaT03576jA4-0dSN18OLERTvig2qPoYQIT63WM_LYLl_vsv32pNkOTm5JM4YgcNzWT6KtM2cmmXhdUEiYtALFEPsbn5kx146kXRnjKH-4mamKG73XrhoP6hmN2CEeK8S3GpL7xCZJqHCZgaxtEkssWwe3P9ZrT4ESEnuQNUkWJ5_tR4TqKGXzxYv-tCPj1Kd5JI8NIfnWkvIHDT0mVkgXJjPob8PD9Vwieql85myQokH0ULkPGZQUcUNrMs9az_WI4chY"/>
+<img alt="Map of Western Cape" class="w-full h-full object-cover grayscale opacity-50" data-alt="Stylized topological map of the Western Cape region with industrial markers and logistics routes highlighted" data-location="Western Cape" decoding="async" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK3N3_7zeaT03576jA4-0dSN18OLERTvig2qPoYQIT63WM_LYLl_vsv32pNkOTm5JM4YgcNzWT6KtM2cmmXhdUEiYtALFEPsbn5kx146kXRnjKH-4mamKG73XrhoP6hmN2CEeK8S3GpL7xCZJqHCZgaxtEkssWwe3P9ZrT4ESEnuQNUkWJ5_tR4TqKGXzxYv-tCPj1Kd5JI8NIfnWkvIHDT0mVkgXJjPob8PD9Vwieql85myQokH0ULkPGZQUcUNrMs9az_WI4chY"/>
 <div class="absolute inset-0 flex items-center justify-center">
 <div class="bg-primary text-white p-6 rounded-lg shadow-2xl flex items-center gap-4">
 <span class="material-symbols-outlined text-on-tertiary-container">location_on</span>
@@ -284,7 +227,7 @@
 </div>
 </section>
 <!-- Testimonials -->
-<section class="bg-surface-container-low py-24">
+<section class="bg-surface-container-low py-24" id="testimonials">
 <div class="max-w-7xl mx-auto px-8">
 <h2 class="text-center text-4xl font-black font-headline uppercase tracking-tighter mb-16 text-primary">Previous Partners</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -334,7 +277,7 @@
 </div>
 </section>
 <!-- Final CTA -->
-<section class="py-24 machined-gradient relative overflow-hidden">
+<section class="py-24 machined-gradient relative overflow-hidden" id="contact">
 <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
 <span class="material-symbols-outlined text-[400px]" style="font-variation-settings: 'FILL' 0;">settings_suggest</span>
 </div>
@@ -355,6 +298,7 @@
 </div>
 </div>
 </section>
+ </main>
 
 <!-- Footer -->
 <footer class="bg-[#1a2332] dark:bg-[#040d1b] w-full border-t border-white/5 grid grid-cols-1 md:grid-cols-2 gap-8 px-10 py-16 w-full">
@@ -364,10 +308,10 @@
                     © 2026 JTK SPARES INDUSTRIAL SOLUTIONS. PRECISION ENGINEERED.
                 </p>
     <div class="flex gap-4">
-    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#ea5c27] transition-all text-white" href="#">
+    <a aria-label="Industrial engineering updates" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#ea5c27] transition-all text-white" href="#">
         <span class="material-symbols-outlined text-sm">precision_manufacturing</span>
     </a>
-    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#ea5c27] transition-all text-white" href="#">
+    <a aria-label="Support contact channel" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#ea5c27] transition-all text-white" href="#">
         <span class="material-symbols-outlined text-sm">support_agent</span>
     </a>
     </div>
