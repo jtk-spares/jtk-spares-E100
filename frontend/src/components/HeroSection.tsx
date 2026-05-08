@@ -40,7 +40,7 @@ export default function HeroSection() {
 
           <p className="text-lg text-white/60 max-w-xl leading-relaxed mb-10">
             JTK Spares supplies and sources mechanical, electrical, and hydraulic spares for
-            South African manufacturers — with the reliability your operations demand.
+            South African manufacturers, with the reliability your operations demand.
           </p>
 
           <div className="flex flex-wrap gap-4">

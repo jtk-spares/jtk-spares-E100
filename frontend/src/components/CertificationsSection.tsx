@@ -3,11 +3,11 @@ import { ShieldCheck } from 'lucide-react'
 const CERTIFICATIONS = [
   {
     title: 'CIDB Registered',
-    detail: 'Construction Industry Development Board — Graded contractor status.',
+    detail: 'Construction Industry Development Board. Graded contractor status.',
   },
   {
     title: 'B-BBEE Compliant',
-    detail: 'Broad-Based Black Economic Empowerment — Level 1 contributor.',
+    detail: 'Broad-Based Black Economic Empowerment. Level 1 contributor.',
   },
   {
     title: 'CSD Registered Supplier',
@@ -15,7 +15,7 @@ const CERTIFICATIONS = [
   },
   {
     title: 'Registered Company',
-    detail: 'Registered with the CIPC — Reg No: 2023/885133/07.',
+    detail: 'Registered with the CIPC. Reg No: 2023/885133/07.',
   },
 ]
 

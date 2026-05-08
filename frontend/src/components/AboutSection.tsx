@@ -2,7 +2,7 @@ import { CheckCircle } from 'lucide-react'
 
 const VALUES = [
   'Rapid sourcing across local and international suppliers',
-  'Dedicated account management — one point of contact',
+  'Dedicated account management, one point of contact',
   'Competitive pricing with no compromise on quality',
   'Serving manufacturers across the Western Cape since 2023',
 ]
@@ -25,12 +25,12 @@ export default function AboutSection() {
               className="text-4xl sm:text-5xl font-extrabold uppercase leading-tight mb-6"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", color: 'var(--jtk-navy)' }}
             >
-              About us — built on speed
+              About us: built on speed
               <br />
               and reliability
             </h2>
             <p className="text-base text-gray-600 leading-relaxed mb-6">
-              JTK Spares was founded by <strong>Jason Kwalie</strong> to solve a real problem —
+              JTK Spares was founded by <strong>Jason Kwalie</strong> to solve a real problem:
               manufacturers waiting days or weeks for parts that should arrive in hours. We cut
               through supplier complexity to get your line moving again.
             </p>
