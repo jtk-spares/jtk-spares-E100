@@ -1,13 +1,8 @@
 {
-  "buildCommand": "npm run frontend:build",
+  "buildCommand": "NODE_ENV=production npm run frontend:build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "framework": null,
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",
