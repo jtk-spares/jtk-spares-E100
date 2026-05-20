@@ -42,6 +42,11 @@ function validateAll(data: FormState): FormErrors {
   return errors
 }
 
+const labelStyle: React.CSSProperties = {
+  color: 'var(--color-text-muted)',
+  fontFamily: 'var(--font-mono)',
+}
+
 export default function ContactSection() {
   const [form, setForm] = useState<FormState>(INITIAL)
   const [errors, setErrors] = useState<FormErrors>({})
@@ -112,21 +117,21 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contacts" className="py-24 scroll-mt-16" aria-labelledby="contact-heading">
+    <section id="contacts" className="py-24 scroll-mt-16" style={{ backgroundColor: 'var(--section-alt-bg)' }} aria-labelledby="contact-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Left: info */}
           <div>
             <p
               className="text-xs font-medium uppercase tracking-widest mb-3"
-              style={{ color: 'var(--color-brand)' }}
+              style={{ color: 'var(--color-brand)', fontFamily: 'var(--font-mono)' }}
             >
               Get in touch
             </p>
             <h2
               id="contact-heading"
               className="text-4xl sm:text-5xl font-extrabold uppercase leading-tight mb-6"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif", color: 'var(--color-surface-dark)' }}
+              style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
             >
               Contact us
             </h2>
@@ -172,12 +177,12 @@ export default function ContactSection() {
             {status === 'sent' ? (
               <div
                 className="p-8 border text-center"
-                style={{ borderColor: 'var(--color-brand)' }}
+                style={{ borderColor: 'var(--color-brand-strong)', backgroundColor: 'var(--card-bg)' }}
                 role="alert"
               >
                 <p
                   className="text-2xl font-bold uppercase mb-2"
-                  style={{ fontFamily: "'Barlow Condensed', sans-serif", color: 'var(--color-surface-dark)' }}
+                  style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
                 >
                   Thank you!
                 </p>
@@ -186,7 +191,7 @@ export default function ContactSection() {
                 </p>
               </div>
             ) : (
-              <form noValidate onSubmit={handleSubmit} className="space-y-6">
+              <form noValidate onSubmit={handleSubmit} className="space-y-6 border p-6 sm:p-8" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
                 {/* Honeypot */}
                 <div aria-hidden="true" style={{ display: 'none' }}>
                   <label htmlFor="_trap">Leave this empty</label>
@@ -203,7 +208,7 @@ export default function ContactSection() {
 
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1" style={{ color: 'var(--color-text-primary)' }}>
+                  <label htmlFor="name" className="block text-xs font-medium uppercase tracking-widest mb-2" style={labelStyle}>
                     Name <span aria-hidden="true">*</span>
                   </label>
                   <input
@@ -220,7 +225,7 @@ export default function ContactSection() {
                     aria-describedby={errors.name ? 'name-error' : undefined}
                     className="block w-full px-3 py-2 border text-sm focus:outline-none focus:ring-2"
                     style={{
-                      borderColor: errors.name ? '#dc2626' : '#d1d5db',
+                      borderColor: errors.name ? 'var(--input-border-error)' : 'var(--input-border)',
                       minHeight: '44px',
                     }}
                   />
@@ -233,7 +238,7 @@ export default function ContactSection() {
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-1" style={{ color: 'var(--color-text-primary)' }}>
+                  <label htmlFor="email" className="block text-xs font-medium uppercase tracking-widest mb-2" style={labelStyle}>
                     Email <span aria-hidden="true">*</span>
                   </label>
                   <input
@@ -250,7 +255,7 @@ export default function ContactSection() {
                     aria-describedby={errors.email ? 'email-error' : undefined}
                     className="block w-full px-3 py-2 border text-sm focus:outline-none focus:ring-2"
                     style={{
-                      borderColor: errors.email ? '#dc2626' : '#d1d5db',
+                      borderColor: errors.email ? 'var(--input-border-error)' : 'var(--input-border)',
                       minHeight: '44px',
                     }}
                   />
@@ -263,7 +268,7 @@ export default function ContactSection() {
 
                 {/* Phone (optional) */}
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-1" style={{ color: 'var(--color-text-primary)' }}>
+                  <label htmlFor="phone" className="block text-xs font-medium uppercase tracking-widest mb-2" style={labelStyle}>
                     Phone
                   </label>
                   <input
@@ -273,14 +278,14 @@ export default function ContactSection() {
                     value={form.phone}
                     onChange={handleChange}
                     autoComplete="tel"
-                    className="block w-full px-3 py-2 border border-gray-300 text-sm focus:outline-none focus:ring-2"
-                    style={{ minHeight: '44px' }}
+                    className="block w-full px-3 py-2 border text-sm focus:outline-none focus:ring-2"
+                    style={{ minHeight: '44px', borderColor: 'var(--input-border)' }}
                   />
                 </div>
 
                 {/* Company (optional) */}
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium mb-1" style={{ color: 'var(--color-text-primary)' }}>
+                  <label htmlFor="company" className="block text-xs font-medium uppercase tracking-widest mb-2" style={labelStyle}>
                     Company
                   </label>
                   <input
@@ -290,14 +295,14 @@ export default function ContactSection() {
                     value={form.company}
                     onChange={handleChange}
                     autoComplete="organization"
-                    className="block w-full px-3 py-2 border border-gray-300 text-sm focus:outline-none focus:ring-2"
-                    style={{ minHeight: '44px' }}
+                    className="block w-full px-3 py-2 border text-sm focus:outline-none focus:ring-2"
+                    style={{ minHeight: '44px', borderColor: 'var(--input-border)' }}
                   />
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-1" style={{ color: 'var(--color-text-primary)' }}>
+                  <label htmlFor="message" className="block text-xs font-medium uppercase tracking-widest mb-2" style={labelStyle}>
                     Message <span aria-hidden="true">*</span>
                   </label>
                   <textarea
@@ -312,7 +317,7 @@ export default function ContactSection() {
                     aria-invalid={!!errors.message}
                     aria-describedby={errors.message ? 'message-error' : undefined}
                     className="block w-full px-3 py-2 border text-sm focus:outline-none focus:ring-2 resize-none"
-                    style={{ borderColor: errors.message ? '#dc2626' : '#d1d5db' }}
+                    style={{ borderColor: errors.message ? 'var(--input-border-error)' : 'var(--input-border)' }}
                   />
                   {errors.message && (
                     <p id="message-error" role="alert" className="mt-1 text-xs text-red-600">
@@ -331,7 +336,7 @@ export default function ContactSection() {
                   type="submit"
                   disabled={status === 'sending'}
                   className="w-full inline-flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white uppercase tracking-wide transition-opacity disabled:opacity-60"
-                  style={{ backgroundColor: 'var(--color-brand)', minHeight: '44px' }}
+                  style={{ backgroundColor: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)', minHeight: '44px', fontFamily: 'var(--font-mono)' }}
                 >
                   {status === 'sending' ? (
                     <>

@@ -45,7 +45,7 @@ export default function ServicesSection() {
     <section
       id="services"
       className="py-24 scroll-mt-16"
-      style={{ backgroundColor: 'var(--jtk-surface)' }}
+      style={{ backgroundColor: 'var(--section-alt-bg)' }}
       aria-labelledby="services-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -54,14 +54,14 @@ export default function ServicesSection() {
         <div className="max-w-2xl mb-16">
           <p
             className="text-xs font-medium uppercase tracking-widest mb-3"
-            style={{ color: 'var(--color-brand)' }}
+            style={{ color: 'var(--color-brand)', fontFamily: 'var(--font-mono)' }}
           >
             What we do
           </p>
           <h2
             id="services-heading"
             className="text-4xl sm:text-5xl font-extrabold uppercase leading-tight"
-            style={{ fontFamily: "'Barlow Condensed', sans-serif", color: 'var(--color-surface-dark)' }}
+            style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
           >
             Our Services
           </h2>
@@ -81,13 +81,13 @@ export default function ServicesSection() {
             >
               <div
                 className="w-10 h-10 flex items-center justify-center mb-5"
-                style={{ backgroundColor: 'var(--color-surface-dark)' }}
+                style={{ backgroundColor: 'var(--color-surface-panel-strong)', color: 'var(--color-brand)' }}
               >
-                <Icon size={18} className="text-white" aria-hidden="true" />
+                <Icon size={18} aria-hidden="true" />
               </div>
               <h3
                 className="font-bold text-base uppercase tracking-wide mb-3"
-                style={{ color: 'var(--color-surface-dark)', fontFamily: "'Barlow Condensed', sans-serif" }}
+                style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)' }}
               >
                 {title}
               </h3>
