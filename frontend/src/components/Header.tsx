@@ -53,13 +53,12 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" aria-label="JTK Spares — back to top" className="flex items-center">
-            <span
-              className="font-bold text-xl uppercase tracking-wide text-white"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
-            >
-              JTK{' '}
-              <span style={{ color: 'var(--color-brand)' }}>Spares</span>
-            </span>
+            <img
+              src="/jtk_logo.svg"
+              alt=""
+              aria-hidden="true"
+              className="h-9 w-auto sm:h-10"
+            />
           </a>
 
           {/* Desktop nav */}
