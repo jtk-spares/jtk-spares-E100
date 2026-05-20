@@ -50,14 +50,17 @@ export default function Header() {
       } as React.CSSProperties}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex min-h-[76px] items-center justify-between py-3 sm:min-h-[84px]">
           {/* Logo */}
-          <a href="#" aria-label="JTK Spares — back to top" className="flex items-center">
+          <a
+            href="#"
+            aria-label="JTK Spares — back to top"
+            className="navbar-brand shrink-0 self-stretch py-1"
+          >
             <img
               src="/jtk_logo.svg"
-              alt=""
-              aria-hidden="true"
-              className="h-9 w-auto sm:h-10"
+              alt="JTK Spares"
+              className="navbar-brand__logo max-w-[220px] sm:max-w-[290px] lg:max-w-[320px]"
             />
           </a>
 

@@ -124,6 +124,27 @@
     top: 0;
   }
 
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+  }
+
+  .navbar-brand__logo {
+    display: block;
+    width: auto;
+    height: 40px;
+    object-fit: contain;
+    object-position: left center;
+    transform: translateZ(0);
+  }
+
+  @media (min-width: 640px) {
+    .navbar-brand__logo {
+      height: 52px;
+    }
+  }
+
   /* Card hover lift */
   .card-hover {
     box-shadow: var(--card-shadow-rest);
