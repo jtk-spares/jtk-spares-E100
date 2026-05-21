@@ -54,7 +54,7 @@ export default function Header() {
           {/* Logo */}
           <a
             href="#"
-            aria-label="JTK Spares — back to top"
+            aria-label="JTK Spares, back to top"
             className="navbar-brand shrink-0 self-stretch py-1"
           >
             <img

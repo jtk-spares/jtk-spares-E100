@@ -12,7 +12,7 @@ const SERVICES = [
     icon: Package,
     title: 'Procurement & Logistics',
     description:
-      'End-to-end procurement management — supplier negotiation, order tracking, and delivery coordination to your site.',
+      'End-to-end procurement management, supplier negotiation, order tracking, and delivery coordination to your site.',
   },
   {
     icon: Wrench,

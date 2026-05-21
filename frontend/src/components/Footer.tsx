@@ -63,7 +63,7 @@ export default function Footer() {
                   style={{ color: 'var(--color-text-secondary)', minHeight: '44px' }}
                   aria-label="WhatsApp Jason Kwalie"
                 >
-                  {/* WhatsApp brand SVG — no emoji */}
+                  {/* WhatsApp brand SVG, no emoji */}
                   <svg
                     aria-hidden="true"
                     width="14"

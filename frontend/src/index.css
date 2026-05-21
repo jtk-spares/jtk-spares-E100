@@ -3,7 +3,7 @@
 
 @layer base {
   :root {
-    /* ─── Primitive tokens ─────────────────────────────────── */
+    /* Primitive tokens */
     --jtk-bg: #0c141f;
     --jtk-bg-lowest: #070e19;
     --jtk-bg-low: #151c27;
@@ -23,7 +23,7 @@
     --font-body: 'Hanken Grotesk', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
 
-    /* ─── Semantic tokens ──────────────────────────────────── */
+    /* Semantic tokens */
     --color-brand: var(--jtk-brand);
     --color-brand-strong: var(--jtk-brand-strong);
     --color-surface-dark: var(--jtk-bg);
@@ -34,7 +34,7 @@
     --color-text-secondary: var(--jtk-text-secondary);
     --color-text-muted: var(--jtk-text-muted);
 
-    /* ─── Component tokens ─────────────────────────────────── */
+    /* Component tokens */
     --btn-primary-bg: var(--color-brand-strong);
     --btn-primary-text: var(--jtk-brand-foreground);
     --card-bg: var(--color-surface-panel);
@@ -48,7 +48,7 @@
     --input-border: var(--jtk-border);
     --input-border-error: var(--jtk-error);
 
-    /* ─── Motion tokens ────────────────────────────────────── */
+    /* Motion tokens */
     --motion-fast: 150ms ease-out;
     --motion-base: 220ms ease-out;
     --motion-entrance: 320ms ease-out;
@@ -146,7 +146,7 @@
     }
   }
 
-  /* Global focus ring — visible on keyboard, hidden on mouse */
+  /* Global focus ring, visible on keyboard, hidden on mouse */
   :focus-visible {
     outline: 2px solid var(--focus-ring);
     outline-offset: 3px;

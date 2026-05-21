@@ -41,7 +41,7 @@ export default function PartnersSection() {
         </FadeContent>
       </div>
 
-      {/* Accessible list — hidden visually but present for tests and screen readers */}
+      {/* Accessible list, hidden visually but present for tests and screen readers */}
       <ul className="sr-only">
         {PARTNERS.map((name) => (
           <li key={name}>{name}</li>
