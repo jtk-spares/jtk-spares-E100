@@ -1,59 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap');
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.6%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.6%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.6%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 9.1%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --primary: 0 0% 9.1%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9.1%;
-    --ring: 0 0% 3.7%;
+    /* Primitive tokens */
+    --jtk-bg: #0c141f;
+    --jtk-bg-lowest: #070e19;
+    --jtk-bg-low: #151c27;
+    --jtk-bg-base: #19202b;
+    --jtk-bg-high: #232a36;
+    --jtk-bg-highest: #2e3541;
+    --jtk-text: #dce2f3;
+    --jtk-text-secondary: #c6c6c9;
+    --jtk-text-muted: #aa8985;
+    --jtk-brand: #ffb4aa;
+    --jtk-brand-strong: #b11e1a;
+    --jtk-brand-foreground: #ffdad5;
+    --jtk-border: #2e3541;
+    --jtk-border-strong: #5b403d;
+    --jtk-error: #93000a;
+    --font-display: 'Hanken Grotesk', sans-serif;
+    --font-body: 'Hanken Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Semantic tokens */
+    --color-brand: var(--jtk-brand);
+    --color-brand-strong: var(--jtk-brand-strong);
+    --color-surface-dark: var(--jtk-bg);
+    --color-surface-light: var(--jtk-bg-low);
+    --color-surface-panel: var(--jtk-bg-base);
+    --color-surface-panel-strong: var(--jtk-bg-high);
+    --color-text-primary: var(--jtk-text);
+    --color-text-secondary: var(--jtk-text-secondary);
+    --color-text-muted: var(--jtk-text-muted);
+
+    /* Component tokens */
+    --btn-primary-bg: var(--color-brand-strong);
+    --btn-primary-text: var(--jtk-brand-foreground);
+    --card-bg: var(--color-surface-panel);
+    --card-border: var(--jtk-border);
+    --card-shadow-rest: none;
+    --card-shadow-hover: 0 0 0 1px rgba(255,180,170,0.18);
+    --nav-bg: var(--color-surface-dark);
+    --section-alt-bg: var(--color-surface-light);
+    --focus-ring: var(--color-brand);
+    --input-bg: var(--jtk-bg-lowest);
+    --input-border: var(--jtk-border);
+    --input-border-error: var(--jtk-error);
+
+    /* Motion tokens */
+    --motion-fast: 150ms ease-out;
+    --motion-base: 220ms ease-out;
+    --motion-entrance: 320ms ease-out;
+
+    /* shadcn/ui compatibility */
+    --background: 215 45% 8%;
+    --foreground: 220 44% 91%;
+    --card: 218 26% 13%;
+    --card-foreground: 220 44% 91%;
+    --popover: 218 26% 13%;
+    --popover-foreground: 220 44% 91%;
+    --muted: 220 21% 17%;
+    --muted-foreground: 7 15% 59%;
+    --accent: 7 100% 83%;
+    --accent-foreground: 359 100% 13%;
+    --destructive: 356 100% 29%;
+    --destructive-foreground: 7 100% 92%;
+    --border: 220 17% 22%;
+    --input: 220 17% 22%;
+    --primary: 1 74% 40%;
+    --primary-foreground: 7 100% 92%;
+    --secondary: 220 3% 28%;
+    --secondary-foreground: 240 6% 89%;
+    --ring: 7 100% 83%;
   }
 
   .dark {
-    --background: 0 0% 3.6%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.6%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.6%;
-    --popover-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 98%;
-    --accent-foreground: 0 0% 9.1%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 9.1%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9.1%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --ring: 0 0% 83.1%;
+    --background: 215 45% 8%;
+    --foreground: 220 44% 91%;
+    --card: 218 26% 13%;
+    --card-foreground: 220 44% 91%;
+    --popover: 218 26% 13%;
+    --popover-foreground: 220 44% 91%;
+    --muted: 220 21% 17%;
+    --muted-foreground: 7 15% 59%;
+    --accent: 7 100% 83%;
+    --accent-foreground: 359 100% 13%;
+    --destructive: 356 100% 29%;
+    --destructive-foreground: 7 100% 92%;
+    --border: 220 17% 22%;
+    --input: 220 17% 22%;
+    --primary: 1 74% 40%;
+    --primary-foreground: 7 100% 92%;
+    --secondary: 220 3% 28%;
+    --secondary-foreground: 240 6% 89%;
+    --ring: 7 100% 83%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: var(--font-body);
+  }
+
+  input,
+  textarea {
+    background-color: var(--input-bg);
+    color: var(--color-text-primary);
+    border-color: var(--input-border);
+    border-radius: 4px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+  }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Global focus ring, visible on keyboard, hidden on mouse */
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Skip-to-main link (a11y) */
+  .skip-link {
+    position: absolute;
+    top: -999px;
+    left: 0;
+    z-index: 9999;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--btn-primary-text);
+    background-color: var(--btn-primary-bg);
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+  }
+
+  .navbar-brand__logo {
+    display: block;
+    width: auto;
+    height: 40px;
+    object-fit: contain;
+    object-position: left center;
+    transform: translateZ(0);
+  }
+
+  @media (min-width: 640px) {
+    .navbar-brand__logo {
+      height: 52px;
+    }
+  }
+
+  /* Card hover lift */
+  .card-hover {
+    box-shadow: var(--card-shadow-rest);
+    transition: box-shadow var(--motion-fast), transform var(--motion-fast);
+  }
+  .card-hover:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+    border-color: var(--jtk-border-strong);
+    background-color: var(--color-surface-panel-strong);
+  }
+
+  /* Marquee animation */
+  @keyframes marquee-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 30s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  /* Marquee items render text via CSS to avoid duplicate DOM text nodes */
+  .marquee-item::before {
+    content: attr(data-label);
+    font-family: var(--font-mono);
+    font-size: inherit;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: inherit;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+
+  /* Section entrance fade-up */
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    animation: fade-up var(--motion-entrance) ease-out both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up {
+      animation: none;
+    }
   }
 }
