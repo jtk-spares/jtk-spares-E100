@@ -1,5 +1,13 @@
 import { useState, useRef, useCallback } from 'react'
-import { Phone, Mail, Loader2 } from 'lucide-react'
+import { Phone, Mail, Loader2, MapPin, ArrowUpRight } from 'lucide-react'
+import {
+  JTK_ADDRESS_LINES,
+  JTK_DIRECTIONS_URL,
+  JTK_EMAIL,
+  JTK_MAP_EMBED_URL,
+  JTK_PHONE_DISPLAY,
+  JTK_PHONE_LINK,
+} from '../lib/contactDetails'
 
 interface FormState {
   name: string
@@ -143,7 +151,7 @@ export default function ContactSection() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:+27683927937"
+                  href={JTK_PHONE_LINK}
                   className="inline-flex items-center gap-3 text-sm font-medium transition-colors"
                   style={{ minHeight: '44px', color: 'var(--color-text-secondary)' }}
                 >
@@ -152,12 +160,12 @@ export default function ContactSection() {
                     style={{ color: 'var(--color-brand)' }}
                     aria-hidden="true"
                   />
-                  +27(0)68 392 7937
+                  {JTK_PHONE_DISPLAY}
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:jason@jtkspares.co.za"
+                  href={`mailto:${JTK_EMAIL}`}
                   className="inline-flex items-center gap-3 text-sm font-medium transition-colors"
                   style={{ minHeight: '44px', color: 'var(--color-text-secondary)' }}
                 >
@@ -166,10 +174,67 @@ export default function ContactSection() {
                     style={{ color: 'var(--color-brand)' }}
                     aria-hidden="true"
                   />
-                  jason@jtkspares.co.za
+                  {JTK_EMAIL}
                 </a>
               </li>
+              <li className="flex items-start gap-3 text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                <MapPin
+                  size={18}
+                  style={{ color: 'var(--color-brand)', marginTop: '2px', flexShrink: 0 }}
+                  aria-hidden="true"
+                />
+                <span>
+                  {JTK_ADDRESS_LINES.map((line, index) => (
+                    <span key={line}>
+                      {line}
+                      {index < JTK_ADDRESS_LINES.length - 1 ? <br /> : null}
+                    </span>
+                  ))}
+                </span>
+              </li>
             </ul>
+
+            <div
+              className="mt-10 overflow-hidden border"
+              style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}
+            >
+              <div className="border-b px-5 py-4" style={{ borderColor: 'var(--card-border)' }}>
+                <p
+                  className="text-xs font-medium uppercase tracking-widest mb-2"
+                  style={{ color: 'var(--color-brand)', fontFamily: 'var(--font-mono)' }}
+                >
+                  Visit us
+                </p>
+                <h3
+                  className="text-xl font-bold uppercase"
+                  style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
+                >
+                  Workshop location
+                </h3>
+              </div>
+              <iframe
+                title="Map showing JTK Spares in Parow Industrial"
+                src={JTK_MAP_EMBED_URL}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="block h-[280px] w-full border-0"
+              />
+              <div className="flex items-center justify-between gap-4 px-5 py-4">
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
+                  Find us at the address listed in the footer for collections, inspections, and statutory support.
+                </p>
+                <a
+                  href={JTK_DIRECTIONS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide whitespace-nowrap"
+                  style={{ color: 'var(--color-brand)', minHeight: '44px', fontFamily: 'var(--font-mono)' }}
+                >
+                  Get directions
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Right: form */}
@@ -328,7 +393,7 @@ export default function ContactSection() {
 
                 {status === 'error' && (
                   <p role="alert" className="text-sm text-red-600">
-                    Something went wrong. Please try again or email us directly at jason@jtkspares.co.za.
+                    Something went wrong. Please try again or email us directly at {JTK_EMAIL}.
                   </p>
                 )}
 

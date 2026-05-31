@@ -29,4 +29,10 @@ describe('ServicesSection', () => {
     render(<ServicesSection />)
     expect(screen.getAllByText(/maintenance|repair|installation/i).length).toBeGreaterThanOrEqual(1)
   })
+
+  it('renders the regulatory compliance card copy', () => {
+    render(<ServicesSection />)
+    expect(screen.getByText(/Regulatory Compliance & Operator Licensing/i)).toBeInTheDocument()
+    expect(screen.getByText(/reverse alarms, strobe lights, speed limiters, and safety cages/i)).toBeInTheDocument()
+  })
 })

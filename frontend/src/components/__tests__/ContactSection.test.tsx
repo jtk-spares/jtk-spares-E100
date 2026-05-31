@@ -44,6 +44,12 @@ describe('ContactSection', () => {
     expect(honeypot).toBeInTheDocument()
   })
 
+  it('renders an embedded map and directions link', () => {
+    render(<ContactSection />)
+    expect(screen.getByTitle(/map showing jtk spares/i)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /get directions/i })).toHaveAttribute('href', expect.stringContaining('google.com/maps/search'))
+  })
+
   it('shows a success message after valid submission', async () => {
     const user = userEvent.setup()
     render(<ContactSection />)

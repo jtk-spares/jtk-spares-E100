@@ -15,6 +15,29 @@ export default function HeroSection() {
       style={{ backgroundColor: 'var(--color-surface-dark)' }}
       aria-label="Hero"
     >
+      <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-y-0 right-0 w-full lg:w-[52%]">
+          <img
+            data-testid="hero-forklift-image"
+            src="/forklift-hero.webp"
+            alt=""
+            className="h-full w-full object-cover object-center lg:object-left"
+            style={{
+              opacity: 0.34,
+              maskImage: 'linear-gradient(to left, rgba(0,0,0,0.96) 58%, rgba(0,0,0,0.22) 88%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,0.96) 58%, rgba(0,0,0,0.22) 88%, transparent 100%)',
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(90deg, rgba(12,20,31,0.98) 0%, rgba(12,20,31,0.86) 26%, rgba(12,20,31,0.48) 56%, rgba(12,20,31,0.68) 100%)',
+            }}
+          />
+        </div>
+      </div>
+
       {/* SVG dot-grid texture */}
       <svg
         aria-hidden="true"
