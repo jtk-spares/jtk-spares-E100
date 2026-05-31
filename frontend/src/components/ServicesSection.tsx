@@ -1,4 +1,4 @@
-import { Search, Wrench, Settings, Zap, Package, HeadphonesIcon } from 'lucide-react'
+import { Search, Wrench, Settings, ShieldCheck, Package, HeadphonesIcon } from 'lucide-react'
 import FadeContent from './ui/FadeContent'
 
 const SERVICES = [
@@ -27,10 +27,10 @@ const SERVICES = [
       'On-site installation coordination for major component replacements, reducing machine downtime.',
   },
   {
-    icon: Zap,
-    title: 'Electrical Components',
+    icon: ShieldCheck,
+    title: 'Regulatory Compliance & Operator Licensing',
     description:
-      'Motors, drives, PLCs, sensors, and electrical assemblies sourced from OEM and quality-approved suppliers.',
+      'Ensure your operations are fully legal, safe, and compliant. We provide end-to-end statutory services for material handling compliance, including managing mandatory operator medical licensing, regulatory certifications, and operator training requirements. Additionally, we source and install essential on-site safety and compliance components such as reverse alarms, strobe lights, speed limiters, and safety cages to keep your fleet and personnel fully protected under industrial regulations.',
   },
   {
     icon: HeadphonesIcon,

@@ -1,7 +1,14 @@
 import { Phone, Mail, MapPin } from 'lucide-react'
+import {
+  JTK_ADDRESS_LINES,
+  JTK_EMAIL,
+  JTK_PHONE_DISPLAY,
+  JTK_PHONE_LINK,
+  JTK_WHATSAPP_MESSAGE,
+  JTK_WHATSAPP_NUMBER,
+} from '../lib/contactDetails'
 
-const WA_NUMBER = '27683927937'
-const WA_MSG = encodeURIComponent('Hi, I need assistance with spare parts.')
+const WA_MSG = encodeURIComponent(JTK_WHATSAPP_MESSAGE)
 
 export default function Footer() {
   return (
@@ -36,27 +43,27 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="tel:+27683927937"
+                  href={JTK_PHONE_LINK}
                   className="inline-flex items-center gap-2 text-sm transition-colors"
                   style={{ color: 'var(--color-text-secondary)', minHeight: '44px' }}
                 >
                   <Phone size={14} style={{ color: 'var(--color-brand)' }} aria-hidden="true" />
-                  +27(0)68 392 7937
+                  {JTK_PHONE_DISPLAY}
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:jason@jtkspares.co.za"
+                  href={`mailto:${JTK_EMAIL}`}
                   className="inline-flex items-center gap-2 text-sm transition-colors"
                   style={{ color: 'var(--color-text-secondary)', minHeight: '44px' }}
                 >
                   <Mail size={14} style={{ color: 'var(--color-brand)' }} aria-hidden="true" />
-                  jason@jtkspares.co.za
+                  {JTK_EMAIL}
                 </a>
               </li>
               <li>
                 <a
-                  href={`https://wa.me/${WA_NUMBER}?text=${WA_MSG}`}
+                  href={`https://wa.me/${JTK_WHATSAPP_NUMBER}?text=${WA_MSG}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm transition-colors"
@@ -93,11 +100,12 @@ export default function Footer() {
                   aria-hidden="true"
                 />
                 <span>
-                  Unit 11 Dunda Park
-                  <br />
-                  23 Junction Road
-                  <br />
-                  Parow Ind 7493
+                  {JTK_ADDRESS_LINES.map((line, index) => (
+                    <span key={line}>
+                      {line}
+                      {index < JTK_ADDRESS_LINES.length - 1 ? <br /> : null}
+                    </span>
+                  ))}
                 </span>
               </div>
             </address>

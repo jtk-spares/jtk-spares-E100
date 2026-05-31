@@ -8,6 +8,11 @@ describe('HeroSection', () => {
     expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
   })
 
+  it('renders the forklift hero image layer', () => {
+    const { container } = render(<HeroSection />)
+    expect(container.querySelector('[data-testid="hero-forklift-image"]')).toHaveAttribute('src', '/forklift-hero.webp')
+  })
+
   it('headline contains JTK or industrial parts context', () => {
     render(<HeroSection />)
     const h1 = screen.getByRole('heading', { level: 1 })
