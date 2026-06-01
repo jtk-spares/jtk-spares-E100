@@ -4,11 +4,11 @@ import FadeContent from './ui/FadeContent'
 const CERTIFICATIONS = [
   {
     title: 'CIDB Registered',
-    detail: 'Construction Industry Development Board — Graded contractor status.',
+    detail: 'Construction Industry Development Board, graded contractor status.',
   },
   {
     title: 'B-BBEE Compliant',
-    detail: 'Broad-Based Black Economic Empowerment — Level 1 contributor.',
+    detail: 'Broad-Based Black Economic Empowerment, Level 1 contributor.',
   },
   {
     title: 'CSD Registered Supplier',
@@ -16,7 +16,7 @@ const CERTIFICATIONS = [
   },
   {
     title: 'Registered Company',
-    detail: 'Registered with the CIPC — Reg No: 2023/885133/07.',
+    detail: 'Registered with the CIPC, Reg No: 2023/885133/07.',
   },
 ]
 
@@ -29,14 +29,14 @@ export default function CertificationsSection() {
         <div className="max-w-2xl mb-16">
           <p
             className="text-xs font-medium uppercase tracking-widest mb-3"
-            style={{ color: 'var(--color-brand)' }}
+            style={{ color: 'var(--color-brand)', fontFamily: 'var(--font-mono)' }}
           >
             Compliance
           </p>
           <h2
             id="cert-heading"
             className="text-4xl sm:text-5xl font-extrabold uppercase leading-tight"
-            style={{ fontFamily: "'Barlow Condensed', sans-serif", color: 'var(--color-surface-dark)' }}
+            style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
           >
             Certifications
           </h2>
@@ -60,7 +60,7 @@ export default function CertificationsSection() {
               <div>
                 <p
                   className="font-bold uppercase tracking-wide text-sm mb-2"
-                  style={{ color: 'var(--color-surface-dark)', fontFamily: "'Barlow Condensed', sans-serif" }}
+                  style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)' }}
                 >
                   {title}
                 </p>

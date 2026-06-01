@@ -26,14 +26,14 @@ export default function PartnersSection() {
           <div className="text-center mb-16">
             <p
               className="text-xs font-medium uppercase tracking-widest mb-3"
-              style={{ color: 'var(--color-brand)' }}
+              style={{ color: 'var(--color-brand)', fontFamily: 'var(--font-mono)' }}
             >
               Trusted by
             </p>
             <h2
               id="partners-heading"
               className="text-4xl sm:text-5xl font-extrabold uppercase leading-tight"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif", color: 'var(--color-surface-dark)' }}
+              style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
             >
               Our Clients &amp; Partners
             </h2>
@@ -41,7 +41,7 @@ export default function PartnersSection() {
         </FadeContent>
       </div>
 
-      {/* Accessible list — hidden visually but present for tests and screen readers */}
+      {/* Accessible list, hidden visually but present for tests and screen readers */}
       <ul className="sr-only">
         {PARTNERS.map((name) => (
           <li key={name}>{name}</li>
@@ -66,7 +66,7 @@ export default function PartnersSection() {
               style={{
                 backgroundColor: 'var(--card-bg)',
                 borderColor: 'var(--card-border)',
-                color: 'var(--color-surface-dark)',
+                color: 'var(--color-text-primary)',
                 whiteSpace: 'nowrap',
                 minWidth: '10rem',
               }}

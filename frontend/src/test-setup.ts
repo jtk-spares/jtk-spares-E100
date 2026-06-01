@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { vi } from 'vitest'
 
-// Mock IntersectionObserver as a class — framer-motion calls `new IntersectionObserver(...)`
+// Mock IntersectionObserver as a class because framer-motion calls `new IntersectionObserver(...)`
 class MockIntersectionObserver {
   readonly root: Element | null = null
   readonly rootMargin: string = ''

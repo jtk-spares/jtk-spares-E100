@@ -43,23 +43,25 @@ export default function Header() {
     <header
       className="fixed top-0 inset-x-0 z-50 border-b transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? 'rgba(4,13,27,0.92)' : 'var(--color-surface-dark)',
+        backgroundColor: scrolled ? 'rgba(12,20,31,0.92)' : 'var(--color-surface-dark)',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderColor: 'rgba(255,255,255,0.08)',
+        borderColor: 'var(--card-border)',
       } as React.CSSProperties}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex min-h-[76px] items-center justify-between py-3 sm:min-h-[84px]">
           {/* Logo */}
-          <a href="#" aria-label="JTK Spares — back to top" className="flex items-center">
-            <span
-              className="font-bold text-xl uppercase tracking-wide text-white"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
-            >
-              JTK{' '}
-              <span style={{ color: 'var(--color-brand)' }}>Spares</span>
-            </span>
+          <a
+            href="#"
+            aria-label="JTK Spares, back to top"
+            className="navbar-brand shrink-0 self-stretch py-1"
+          >
+            <img
+                src="/jtk_logo.png-removebg-preview.png"
+              alt="JTK Spares"
+              className="navbar-brand__logo max-w-[220px] sm:max-w-[290px] lg:max-w-[320px]"
+            />
           </a>
 
           {/* Desktop nav */}
@@ -73,10 +75,11 @@ export default function Header() {
                   aria-current={isActive ? 'page' : undefined}
                   className="text-sm font-medium uppercase tracking-wider transition-colors duration-200"
                   style={{
-                    color: isActive ? 'var(--color-brand)' : 'rgba(255,255,255,0.65)',
+                    color: isActive ? 'var(--color-brand)' : 'rgba(220,226,243,0.72)',
+                    fontFamily: 'var(--font-mono)',
                   }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--color-brand)' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = isActive ? 'var(--color-brand)' : 'rgba(255,255,255,0.65)' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = isActive ? 'var(--color-brand)' : 'rgba(220,226,243,0.72)' }}
                 >
                   {label}
                 </a>
@@ -89,7 +92,7 @@ export default function Header() {
             <a
               href="#contacts"
               className="hidden md:inline-flex items-center px-4 py-2 text-sm font-semibold text-white uppercase tracking-wide transition-opacity hover:opacity-90"
-              style={{ backgroundColor: 'var(--color-brand)' }}
+              style={{ backgroundColor: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)', fontFamily: 'var(--font-mono)' }}
             >
               Get a Quote
             </a>
@@ -112,7 +115,7 @@ export default function Header() {
         <div
           id="mobile-nav"
           className="md:hidden border-t"
-          style={{ backgroundColor: 'var(--color-surface-dark)', borderColor: 'rgba(255,255,255,0.08)' }}
+          style={{ backgroundColor: 'var(--color-surface-light)', borderColor: 'var(--card-border)' }}
         >
           <nav aria-label="Mobile navigation" className="px-4 py-4 flex flex-col gap-1">
             {NAV_LINKS.map(({ label, href, sectionId }) => (
@@ -121,7 +124,7 @@ export default function Header() {
                 href={href}
                 onClick={() => setMenuOpen(false)}
                 className="py-3 text-sm font-medium uppercase tracking-wider transition-colors"
-                style={{ color: activeSection === sectionId ? 'var(--color-brand)' : 'rgba(255,255,255,0.7)' }}
+                style={{ color: activeSection === sectionId ? 'var(--color-brand)' : 'var(--color-text-secondary)', fontFamily: 'var(--font-mono)' }}
               >
                 {label}
               </a>
@@ -130,7 +133,7 @@ export default function Header() {
               href="#contacts"
               onClick={() => setMenuOpen(false)}
               className="mt-2 py-3 px-4 text-sm font-semibold text-white text-center uppercase tracking-wide transition-opacity hover:opacity-90"
-              style={{ backgroundColor: 'var(--color-brand)' }}
+              style={{ backgroundColor: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)', fontFamily: 'var(--font-mono)' }}
             >
               Get a Quote
             </a>

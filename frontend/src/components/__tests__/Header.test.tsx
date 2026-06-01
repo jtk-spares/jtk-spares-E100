@@ -9,6 +9,11 @@ describe('Header', () => {
     expect(screen.getByRole('link', { name: /JTK Spares/i })).toBeInTheDocument()
   })
 
+  it('uses the transparent PNG navbar logo asset', () => {
+    const { container } = render(<Header />)
+    expect(container.querySelector('.navbar-brand__logo')).toHaveAttribute('src', '/jtk_logo.png-removebg-preview.png')
+  })
+
   it('renders About nav link pointing to #about', () => {
     render(<Header />)
     const link = screen.getByRole('link', { name: /^about$/i })

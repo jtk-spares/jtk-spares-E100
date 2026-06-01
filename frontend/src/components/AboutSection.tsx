@@ -18,14 +18,14 @@ const AboutSection: FC = () => {
           <div>
             <p
               className="text-xs font-medium uppercase tracking-widest mb-3"
-              style={{ color: 'var(--color-brand)' }}
+              style={{ color: 'var(--color-brand)', fontFamily: 'var(--font-mono)' }}
             >
               About us
             </p>
             <h2
               id="about-heading"
               className="text-4xl sm:text-5xl font-extrabold uppercase leading-tight mb-6"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif", color: 'var(--color-surface-dark)' }}
+              style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
             >
               About us: built on speed
               <br />
@@ -52,7 +52,7 @@ const AboutSection: FC = () => {
                 <li
                   key={value}
                   className="flex items-start gap-0 pl-4"
-                  style={{ borderLeft: '3px solid var(--color-brand)' }}
+                  style={{ borderLeft: '3px solid var(--color-brand-strong)' }}
                 >
                   <span className="text-base leading-relaxed py-2 pl-3" style={{ color: 'var(--color-text-secondary)' }}>
                     {value}
