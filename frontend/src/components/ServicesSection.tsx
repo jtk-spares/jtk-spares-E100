@@ -30,7 +30,7 @@ const SERVICES = [
     icon: ShieldCheck,
     title: 'Regulatory Compliance & Operator Licensing',
     description:
-      'Ensure your operations are fully legal, safe, and compliant. We provide end-to-end statutory services for material handling compliance, including managing mandatory operator medical licensing, regulatory certifications, and operator training requirements. Additionally, we source and install essential on-site safety and compliance components such as reverse alarms, strobe lights, speed limiters, and safety cages to keep your fleet and personnel fully protected under industrial regulations.',
+      'We handle mandatory operator licensing and medical certifications, alongside the sourcing and installation of required vehicle safety and compliance components.',
   },
   {
     icon: HeadphonesIcon,
