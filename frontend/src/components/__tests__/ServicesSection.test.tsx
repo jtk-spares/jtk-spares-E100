@@ -13,34 +13,18 @@ describe('ServicesSection', () => {
     expect(screen.getByRole('heading', { name: /services/i })).toBeInTheDocument()
   })
 
-  it('renders at least 3 service items', () => {
-    render(<ServicesSection />)
-    // Each service should have a heading
-    const serviceHeadings = screen.getAllByRole('heading', { level: 3 })
-    expect(serviceHeadings.length).toBeGreaterThanOrEqual(3)
-  })
-
-  it('renders Part Sourcing as a service', () => {
-    render(<ServicesSection />)
-    expect(screen.getByRole('heading', { name: /part sourcing/i })).toBeInTheDocument()
-  })
-
-  it('renders Maintenance or Repair as a service', () => {
-    render(<ServicesSection />)
-    expect(screen.getAllByText(/maintenance|repair|installation/i).length).toBeGreaterThanOrEqual(1)
-  })
-
-  it('renders the regulatory compliance card copy', () => {
-    render(<ServicesSection />)
-    expect(screen.getByText(/Regulatory Compliance & Operator Licensing/i)).toBeInTheDocument()
-    expect(screen.getByText(/reverse alarms, strobe lights, speed limiters, and safety cages/i)).toBeInTheDocument()
-  })
-
   it('renders service images for each card', () => {
     render(<ServicesSection />)
     const images = screen.getAllByRole('img')
     expect(images).toHaveLength(6)
     expect(images[0]).toHaveAttribute('src', '/service-part-sourcing.jpeg')
     expect(images[4]).toHaveAttribute('src', '/service-compliance.jpeg')
+  })
+
+  it('does not render card titles or descriptions under images', () => {
+    render(<ServicesSection />)
+    expect(screen.queryByRole('heading', { level: 3 })).not.toBeInTheDocument()
+    expect(screen.queryByText(/part sourcing/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/reverse alarms, strobe lights/i)).not.toBeInTheDocument()
   })
 })
