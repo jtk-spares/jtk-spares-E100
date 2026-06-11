@@ -22,7 +22,7 @@ describe('ServicesSection', () => {
 
   it('renders Part Sourcing as a service', () => {
     render(<ServicesSection />)
-    expect(screen.getByText(/part sourcing|sourcing/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /part sourcing/i })).toBeInTheDocument()
   })
 
   it('renders Maintenance or Repair as a service', () => {
@@ -34,5 +34,13 @@ describe('ServicesSection', () => {
     render(<ServicesSection />)
     expect(screen.getByText(/Regulatory Compliance & Operator Licensing/i)).toBeInTheDocument()
     expect(screen.getByText(/reverse alarms, strobe lights, speed limiters, and safety cages/i)).toBeInTheDocument()
+  })
+
+  it('renders service images for each card', () => {
+    render(<ServicesSection />)
+    const images = screen.getAllByRole('img')
+    expect(images).toHaveLength(6)
+    expect(images[0]).toHaveAttribute('src', '/service-part-sourcing.jpeg')
+    expect(images[4]).toHaveAttribute('src', '/service-compliance.jpeg')
   })
 })
